@@ -1,0 +1,41 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/cards/cards",
+    "pages/logs/logs",
+    "pages/registe/registe"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "会员惠",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#35495e",
+    "borderStyle": "white",
+    "backgroundColor": "#f9f9f9",
+    "list": [
+      {
+        "text": "",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/pak.png",
+        "selectedIconPath": "images/pak.png"
+      },
+      {
+        "text": "cards",
+        "pagePath": "pages/cards/cards",
+        "iconPath": "images/pak.png",
+        "selectedIconPath": "images/pak.png"
+      },
+      {
+        "text": "",
+        "pagePath": "pages/logs/logs",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my.png"
+      }
+    ]
+  }
+
+}

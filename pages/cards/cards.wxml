@@ -1,0 +1,21 @@
+<!--logs.wxml-->
+<view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view>
+      <input style='line-height:82rpx;' name="input" maxlength="11" placeholder="输入手机号查询" />
+      <button type="primary"  formType="submit" size='default'>查询</button>
+    </view>
+  </form>
+
+  <block wx:for="{{members}}" wx:key="memberId" wx:for-item="member">
+    <view class="item-container">
+      <view>
+        <image src="../../../images/my.png" style='width:90rpx;height:90rpx'></image>
+      </view>
+
+      <view style='line-height:82rpx;'>
+        {{member.memberId}} : {{member.name}} : {{member.phone}}
+      </view>
+    </view>
+  </block>
+</view>
