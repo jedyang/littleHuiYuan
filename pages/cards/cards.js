@@ -1,5 +1,6 @@
 //cards.js
 const app = getApp();
+var header = app.globalData.header;
 Page({
   data: {
     userInfo: {},
@@ -35,12 +36,12 @@ Page({
     }
 
     var that = this
-    console.log(that.data.userInfo)
     wx.request({
-      url: 'http://localhost:8080/api/member/' + that.data.userInfo+'/allMember',
+      url: 'http://localhost:8080/api/member/' + header.Cookie + '/allMember',
       method: 'GET',
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json', // 默认值
+        'Cookie': header.Cookie
       },
       success: function (res) {
         console.log(res.data)
