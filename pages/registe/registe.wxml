@@ -2,6 +2,8 @@
 <view class="add-page">
   <form bindsubmit="submitForm">
    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
+   <!-- 隐藏字段，openId -->
+   <input name="openId" class="input" maxlength="100" style='display:none' value="{{openId}}" />
     <view class="mod-a">
       <view class="mod t-name">
         <text class="key">店铺名称</text>

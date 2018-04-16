@@ -57,6 +57,7 @@ Page({
         "shopName": shopName,
         "shopAddr": shopAddr,
         "shopDesc": shopDesc,
+        "openId": wx.getStorageSync("LoginSessionKey")
       },
       header: {
         'content-type': 'application/json' // 默认值

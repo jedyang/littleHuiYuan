@@ -56,7 +56,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
-    header: { 'Cookie': 'JSESSION=***' }
+    userInfo: null
   }
 })
