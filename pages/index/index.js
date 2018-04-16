@@ -42,6 +42,20 @@ Page({
         }
       })
     }
+    // 查询用户信息
+    wx.request({
+      url: 'http://localhost:8080/api/member/' + wx.getStorageSync("LoginSessionKey") +'/allMember',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+        wx.switchTab({
+          url: '../cards/cards',
+        })
+      }
+    })
   },
   getUserInfo: function (e) {
     console.log(e)
