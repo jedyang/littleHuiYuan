@@ -11,5 +11,9 @@
   <view class="userinfo">
     <button type="primary" bindtap="doRegiste"> 注册店铺 </button>
   </view>
+
+  <view class="userinfo">
+    <button type="primary" bindtap="doAddMember"> 注册会员 </button>
+  </view>
  
 </view>

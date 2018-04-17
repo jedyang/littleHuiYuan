@@ -69,5 +69,11 @@ Page({
     wx.redirectTo({
       url: '../registe/registe',
     })
+  },
+
+  doAddMember: function () {
+    wx.redirectTo({
+      url: '../registe/registe',
+    })
   }
 })
