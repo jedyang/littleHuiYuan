@@ -51,10 +51,10 @@ Page({
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    var phone = e.detail.value
+    var words = e.detail.value
     var that = this
     wx.request({
-      url: 'http://localhost:8080/api/member/1234/allMember/' + phone,
+      url: 'http://localhost:8080/api/member/allMember?' + 'shopId=1234' + '&words=' + words,
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值

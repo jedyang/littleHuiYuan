@@ -7,27 +7,16 @@
     <view class="mod-a">
       <view class="mod t-name">
         <text class="key">会员名称</text>
-        <input name="shopName" class="input" maxlength="100" placeholder="请输入店铺名称" value="{{shopName}}" />
+        <input name="name" class="input" maxlength="100"  value="{{shopName}}" />
       </view>
     </view>
 
     <view class="mod-a">
       <view class="mod t-name">
-        <text class="key">店铺地址</text>
-        <input name="shopAddr" class="input" maxlength="100" placeholder="请输入店铺地址" value="{{shopAddr}}" />
+        <text class="key">手机号</text>
+        <input name="phone" class="input" maxlength="100" placeholder="可输入手机号" value="{{phone}}" />
       </view>
     </view>
-
-    <view class="mod-a mt20">
-      <view class="mod-big">
-        <textarea name="shopDesc" class="weui-textarea" placeholder="可输入店铺简介或者最新活动" value="{{shopDesc}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />
-        <view class="chnumber">{{noteNowLen}}/{{noteMaxLen}}</view>
-      </view>
-    </view>
-    <view class="add_pic" bindtap="uploadPic">
-      <view>添加图片（选）</view>
-    </view>
-
 
     <view class="mod-a mt20">
       <view class="submit-btn">
