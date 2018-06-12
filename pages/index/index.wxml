@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+  <!-- 
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 注册店铺 </button>
     <block wx:else>
@@ -7,7 +8,7 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-
+  -->
   <view>
     <button wx:if="{{!hasShopInfo}}" type="primary" bindtap="doRegiste"> 注册店铺 </button>
     <block wx:else>
@@ -18,5 +19,5 @@
   <view style='display:none'>
     <button type="primary" bindtap="doAddMember"> 注册会员 </button>
   </view>
- 
+
 </view>
