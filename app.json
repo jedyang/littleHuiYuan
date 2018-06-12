@@ -2,6 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/cards/cards",
+    "pages/shops/shops",
     "pages/logs/logs",
     "pages/registe/registe"
   ],
@@ -18,7 +19,7 @@
     "backgroundColor": "#f9f9f9",
     "list": [
       {
-        "text": "",
+        "text": "会员",
         "pagePath": "pages/index/index",
         "iconPath": "images/pak.png",
         "selectedIconPath": "images/pak.png"
@@ -30,8 +31,8 @@
         "selectedIconPath": "images/pak.png"
       },
       {
-        "text": "",
-        "pagePath": "pages/logs/logs",
+        "text": "我的",
+        "pagePath": "pages/shops/shops",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/my.png"
       }

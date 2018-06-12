@@ -24,8 +24,9 @@ App({
             success: function (res) {
               console.log(res)
               if (res.data.success) {
-                console.log(res.data.data.loginSessionKey);
+                console.log(res.data.data);
                 wx.setStorageSync('LoginSessionKey', res.data.data.loginSessionKey);
+                wx.setStorageSync('MemberId', res.data.data.memberId);
               }
             }
           })

@@ -1,21 +1,13 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
+//cards.js
+const app = getApp();
 Page({
   data: {
-    hasShopInfo: false,//标识有无店铺
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    sessionId: wx.getStorageSync("LoginSessionKey")
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
+  onLoad: function (res) {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -26,7 +18,7 @@ Page({
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
         this.setData({
-          userInfo: res.userInfo,
+          userInfo: res,
           hasUserInfo: true
         })
       }
@@ -42,38 +34,35 @@ Page({
         }
       })
     }
-    // 查询用户信息
+
+    var that = this
     wx.request({
-      url: 'http://localhost:8080/api/shop/myShops?userId=' + wx.getStorageSync("MemberId"),
+      url: 'http://localhost:8080/api/member/' + this.data.sessionId + '/allMember',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': {"sessionId" : this.data.sessionId}
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({ members: res.data.data })
+      }
+    })
+  },
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    var words = e.detail.value
+    var that = this
+    wx.request({
+      url: 'http://localhost:8080/api/member/allMember?' + 'shopId=1234' + '&words=' + words,
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
         console.log(res.data)
-        wx.switchTab({
-          url: '../shops/shops',
-        })
+        that.setData({ members: res.data.data })
       }
     })
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  doRegiste: function () {
-    wx.redirectTo({
-      url: '../registe/registe',
-    })
-  },
-
-  doAddMember: function () {
-    wx.redirectTo({
-      url: '../registe/registe',
-    })
-  }
 })
