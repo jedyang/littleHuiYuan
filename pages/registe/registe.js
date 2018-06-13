@@ -65,7 +65,7 @@ Page({
       success: function (res) {
         console.log(res.data)
         wx.switchTab({
-          url: '../index/index',
+          url: '../shops/shops',
         })
       }
     })

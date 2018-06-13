@@ -51,9 +51,12 @@ Page({
       },
       success: function (res) {
         console.log(res.data)
-        wx.switchTab({
-          url: '../shops/shops',
-        })
+        if (res.data.data.length > 0){
+          wx.switchTab({
+            url: '../shops/shops',
+          })
+        }
+        
       }
     })
   },
