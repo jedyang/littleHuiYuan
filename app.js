@@ -1,14 +1,10 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
     // 登录
     // 先从存储拿
-    if(wx.getStorageSync('LoginSessionKey')){
+    if (wx.getStorageSync('MemberId') || wx.getStorageSync('ShopUserId')) {
+      console.log("onLaunch get storeInfo");
       return;
     }
     wx.login({
@@ -24,8 +20,9 @@ App({
             success: function (res) {
               console.log(res)
               if (res.data.success) {
-                console.log(res.data.data);
+                console.log("login success:" + res.data.data);
                 wx.setStorageSync('LoginSessionKey', res.data.data.loginSessionKey);
+                wx.setStorageSync('ShopUserId', res.data.data.shopUserId);
                 wx.setStorageSync('MemberId', res.data.data.memberId);
               }
             }

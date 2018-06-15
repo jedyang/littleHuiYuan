@@ -43,20 +43,21 @@ Page({
       })
     }
     // 查询用户信息
+    console.log(" wx.getStorageSync(ShopUserId):" + wx.getStorageSync("ShopUserId"));
     wx.request({
-      url: 'http://localhost:8080/api/shop/myShops?userId=' + wx.getStorageSync("MemberId"),
+      url: 'http://localhost:8080/api/shop/myShops?userId=' + wx.getStorageSync("ShopUserId"),
       method: 'GET',
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log(res.data)
-        if (res.data.data.length > 0){
+        console.log("myshops:" + res.data.data);
+        if (res.data.data.length > 0) {
           wx.switchTab({
             url: '../shops/shops',
           })
         }
-        
+
       }
     })
   },

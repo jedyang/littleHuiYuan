@@ -2,12 +2,12 @@
 const app = getApp();
 Page({
   data: {
-    memberId: wx.getStorageSync("MemberId")
+    userId: wx.getStorageSync("ShopUserId")
   },
   onLoad: function (res) {
     var that = this
     wx.request({
-      url: 'http://localhost:8080/api/shop/myShops?userId=' + this.data.memberId,
+      url: 'http://localhost:8080/api/shop/myShops?userId=' + this.data.userId,
       method: 'GET',
       header: {
         'content-type': 'application/json', // 默认值
