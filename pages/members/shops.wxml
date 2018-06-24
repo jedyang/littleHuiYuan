@@ -1,0 +1,14 @@
+<!--logs.wxml-->
+<view>
+  <block wx:for="{{members}}" wx:key="memberId" wx:for-item="member">
+    <view class="item-container">
+      <view>
+        <image src="../../../images/my.png" style='width:90rpx;height:90rpx'></image>
+      </view>
+
+      <view style='line-height:82rpx;'>
+        {{member.memberId}} : {{member.name}} : {{member.phone}}
+      </view>
+    </view>
+  </block>
+</view>

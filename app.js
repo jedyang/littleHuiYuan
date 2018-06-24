@@ -13,17 +13,24 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'http://localhost:8080/api/member/onLogin',
+            url: 'http://localhost:8080/api/appUser/onLogin',
             data: {
               code: res.code
             },
             success: function (res) {
               console.log(res)
               if (res.data.success) {
-                console.log("login success:" + res.data.data);
-                wx.setStorageSync('LoginSessionKey', res.data.data.loginSessionKey);
-                wx.setStorageSync('ShopUserId', res.data.data.shopUserId);
-                wx.setStorageSync('MemberId', res.data.data.memberId);
+                console.log("login success:" + res.data.result);
+                wx.setStorageSync('LoginSessionKey', res.data.result.loginSessionKey);
+                wx.setStorageSync('isShopUser', res.data.result.isShopUser);
+                wx.setStorageSync('isMember', res.data.result.isMember);
+                if (res.data.result.isShopUser) {
+                  wx.setStorageSync('ShopUserId', res.data.result.shopUserId);
+                }
+                if (res.data.result.isMember) {
+                  wx.setStorageSync('MemberId', res.data.result.memberId);
+
+                }
               }
             }
           })

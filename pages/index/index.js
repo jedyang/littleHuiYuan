@@ -51,8 +51,8 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log("myshops:" + res.data.data);
-        if (res.data.data.length > 0) {
+        console.log("myshops:" + res.data.result);
+        if (res.data.result.length > 0) {
           wx.switchTab({
             url: '../shops/shops',
           })
