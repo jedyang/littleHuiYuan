@@ -4,7 +4,8 @@
     "pages/cards/cards",
     "pages/shops/shops",
     "pages/logs/logs",
-    "pages/registe/registe"
+    "pages/registe/registe",
+    "pages/members/members"
   ],
   "window":{
     "backgroundTextStyle":"light",
