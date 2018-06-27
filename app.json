@@ -5,7 +5,8 @@
     "pages/shops/shops",
     "pages/logs/logs",
     "pages/registe/registe",
-    "pages/members/members"
+    "pages/members/members",
+    "pages/detail/detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

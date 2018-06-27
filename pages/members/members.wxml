@@ -1,5 +1,5 @@
-<!--logs.wxml-->
-<view>
+
+<!-- <view>
   <block wx:for="{{members}}" wx:key="memberId" wx:for-item="member">
     <view class="item-container">
       <view>
@@ -11,4 +11,17 @@
       </view>
     </view>
   </block>
+</view> -->
+<view class="page">
+<view class="weui-cells__title">店铺会员</view>
+        <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{members}}" wx:key="memberId" wx:for-item="member">
+            <navigator url="../detail/detail?memberId={{member.menberId}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">{{member.name}}</view>
+                <view class="weui-cell__bd">{{member.phone}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            </block>
+        </view>
+
 </view>
