@@ -11,9 +11,7 @@ Page({
   },
   //事件处理函数
   bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+   
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -53,8 +51,14 @@ Page({
       success: function (res) {
         console.log("myshops:" + res.data.result);
         if (res.data.result.length > 0) {
+          // 有店铺，是老板，去到我的店铺页面
           wx.switchTab({
             url: '../shops/shops',
+          })
+        }else{
+          // 没有店铺，是顾客，渠道会员卡页面
+          wx.switchTab({
+            url: '../cards/cards',
           })
         }
 

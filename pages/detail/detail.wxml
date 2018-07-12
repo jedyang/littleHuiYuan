@@ -8,15 +8,11 @@
   <view class="page__bd">
     <view class="weui-panel weui-panel_access">
       <view class="weui-panel__hd">消费记录</view>
-      <view class="weui-panel__bd">
-      <block wx:for="{{shops}}" wx:key="shopId" wx:for-item="shop">
-          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{icon60}}" />
-          </view>
-          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">{{shop.shopName}}</view>
-            <view class="weui-media-box__desc">{{shop.shopAddr}}</view>
-            <view class="weui-media-box__desc">{{shop.shopDesc}}</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{logs}}" wx:for-item="log">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">本次消费： {{log.money}}</view>
+            <view class="weui-cell__ft">当前余额： {{log.newMoney}}</view>
           </view>
         </block>
       </view>

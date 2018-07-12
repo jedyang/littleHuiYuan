@@ -11,14 +11,14 @@ Page({
     console.log("detail memberID:" + res.memberId + ",shopId:" + res.shopId);
     var that = this
     wx.request({
-      url: 'http://localhost:8080/api/member/consumeList?memberId=' + that.data.memberId +"&shopId=" + that.data.shopId,
+      url: 'http://localhost:8080/api/member/consumeLogs?memberId=' + that.data.memberId +"&shopId=" + that.data.shopId,
       method: 'GET',
       header: {
         'content-type': 'application/json', // 默认值
       },
       success: function (res) {
         console.log(res.data)
-        that.setData({ member: res.data.result })
+        that.setData({ logs: res.data.result })
       }
     })
   },
