@@ -21,19 +21,13 @@
     "backgroundColor": "#f9f9f9",
     "list": [
       {
-        "text": "会员",
+        "text": "",
         "pagePath": "pages/index/index",
         "iconPath": "images/pak.png",
         "selectedIconPath": "images/pak.png"
       },
       {
-        "text": "cards",
-        "pagePath": "pages/cards/cards",
-        "iconPath": "images/pak.png",
-        "selectedIconPath": "images/pak.png"
-      },
-      {
-        "text": "我的",
+        "text": "",
         "pagePath": "pages/shops/shops",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/my.png"
