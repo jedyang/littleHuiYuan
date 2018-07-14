@@ -9,7 +9,7 @@
     <view class="weui-panel weui-panel_access">
       <view class="weui-panel__hd">消费记录</view>
       <view class="weui-cells weui-cells_after-title">
-        <block wx:for="{{logs}}" wx:for-item="log">
+        <block wx:for="{{logs}}" wx:key="logId" wx:for-item="log">
           <view class="weui-cell">
             <view class="weui-cell__bd">本次消费： {{log.money}}</view>
             <view class="weui-cell__ft">当前余额： {{log.newMoney}}</view>
