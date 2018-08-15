@@ -1,6 +1,8 @@
 //app.js
 App({
   onLaunch: function () {
+    console.log("APP onLaunch");
+
     // 登录
     // 先从存储拿
     if (wx.getStorageSync('MemberId') || wx.getStorageSync('ShopUserId')) {
@@ -20,10 +22,10 @@ App({
             success: function (res) {
               console.log(res)
               if (res.data.success) {
-                console.log("login success:" + res.data.data);
-                wx.setStorageSync('LoginSessionKey', res.data.data.loginSessionKey);
-                wx.setStorageSync('ShopUserId', res.data.data.shopUserId);
-                wx.setStorageSync('MemberId', res.data.data.memberId);
+                console.log("login success:" + res.data.result);
+                wx.setStorageSync('LoginSessionKey', res.data.result.loginSessionKey);
+                wx.setStorageSync('ShopUserId', res.data.result.shopUserId);
+                wx.setStorageSync('MemberId', res.data.result.memberId);
               }
             }
           })
@@ -52,6 +54,17 @@ App({
         }
       }
     })
+  },
+  onShow: function () {
+    // Do something when show.
+    console.log("APP onShow");
+  },
+  onHide: function () {
+    // Do something when hide.
+    console.log("APP onHide");
+  },
+  onError: function (msg) {
+    console.log(msg)
   },
   globalData: {
     userInfo: null

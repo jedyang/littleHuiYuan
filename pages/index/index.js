@@ -16,6 +16,7 @@ Page({
     })
   },
   onLoad: function () {
+    console.log("view onLoad");
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -52,7 +53,7 @@ Page({
       },
       success: function (res) {
         console.log("myshops:" + res.data.data);
-        if (res.data.data.length > 0) {
+        if (!res.data&& resres.data.data.length > 0) {
           wx.switchTab({
             url: '../shops/shops',
           })
@@ -60,6 +61,22 @@ Page({
 
       }
     })
+  },
+  onReady: function () {
+    // Do something when page ready.
+    console.log("view onReady");
+  },
+  onShow: function () {
+    // Do something when page show.
+    console.log("view onShow");
+  },
+  onHide: function () {
+    // Do something when page hide.
+    console.log("view onHide");
+  },
+  onUnload: function () {
+    // Do something when page close.
+    console.log("view onUnload");
   },
   getUserInfo: function (e) {
     console.log(e)
