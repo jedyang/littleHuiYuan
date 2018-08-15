@@ -4,16 +4,14 @@ const app = getApp()
 
 Page({
   data: {
-    hasShopInfo: false,//标识有无店铺
+    hasShopInfo: false, //标识有无店铺
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  bindViewTap: function() {
+
   },
   onLoad: function () {
     console.log("view onLoad");
@@ -45,22 +43,38 @@ Page({
     }
     // 查询用户信息
     console.log(" wx.getStorageSync(ShopUserId):" + wx.getStorageSync("ShopUserId"));
-    wx.request({
-      url: 'http://localhost:8080/api/shop/myShops?userId=' + wx.getStorageSync("ShopUserId"),
-      method: 'GET',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        console.log("myshops:" + res.data.data);
-        if (!res.data&& resres.data.data.length > 0) {
+
+    console.log(" wx.getStorageSync(memberId):" + wx.getStorageSync("MemberId"));
+    if (wx.getStorageSync("isShopUser")) {
+      // 是老板，去到我的店铺页面
+      wx.request({
+        url: 'http://localhost:8080/api/shop/myShops?userId=' + wx.getStorageSync("ShopUserId"),
+        method: 'GET',
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function(res) {
           wx.switchTab({
             url: '../shops/shops',
           })
         }
+      })
+    } else if (wx.getStorageSync("isMember")) {
+      // 是顾客，渠道会员卡页面
+      wx.request({
+        url: 'http://localhost:8080/api/shop/myShops?userId=' + wx.getStorageSync("ShopUserId"),
+        method: 'GET',
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function(res) {
+            wx.switchTab({
+              url: '../cards/cards',
+            })
+        }
+      })
+    }
 
-      }
-    })
   },
   onReady: function () {
     // Do something when page ready.
@@ -86,13 +100,13 @@ Page({
       hasUserInfo: true
     })
   },
-  doRegiste: function () {
+  doRegiste: function() {
     wx.redirectTo({
       url: '../registe/registe',
     })
   },
 
-  doAddMember: function () {
+  doAddMember: function() {
     wx.redirectTo({
       url: '../registe/registe',
     })

@@ -4,7 +4,9 @@
     "pages/cards/cards",
     "pages/shops/shops",
     "pages/logs/logs",
-    "pages/registe/registe"
+    "pages/registe/registe",
+    "pages/members/members",
+    "pages/detail/detail"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -19,19 +21,13 @@
     "backgroundColor": "#f9f9f9",
     "list": [
       {
-        "text": "会员",
+        "text": "",
         "pagePath": "pages/index/index",
         "iconPath": "images/pak.png",
         "selectedIconPath": "images/pak.png"
       },
       {
-        "text": "cards",
-        "pagePath": "pages/cards/cards",
-        "iconPath": "images/pak.png",
-        "selectedIconPath": "images/pak.png"
-      },
-      {
-        "text": "我的",
+        "text": "",
         "pagePath": "pages/shops/shops",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/my.png"

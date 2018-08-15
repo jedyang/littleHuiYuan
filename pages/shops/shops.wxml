@@ -1,14 +1,31 @@
-<!--logs.wxml-->
-<view>
-  <block wx:for="{{members}}" wx:key="memberId" wx:for-item="member">
-    <view class="item-container">
-      <view>
-        <image src="../../../images/my.png" style='width:90rpx;height:90rpx'></image>
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">我的店铺</view>
+    <view class="page__desc">说明</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__hd">我的店铺列表</view>
+      <view class="weui-panel__bd">
+      <block wx:for="{{shops}}" wx:key="shopId" wx:for-item="shop">
+        <navigator url="../members/members?shopId={{shop.shopId}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{icon60}}" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">{{shop.shopName}}</view>
+            <view class="weui-media-box__desc">{{shop.shopAddr}}</view>
+            <view class="weui-media-box__desc">{{shop.shopDesc}}</view>
+          </view>
+        </navigator>
+        </block>
       </view>
-
-      <view style='line-height:82rpx;'>
-        {{member.memberId}} : {{member.name}} : {{member.phone}}
+      <view class="weui-panel__ft">
+        <view class="weui-cell weui-cell_access weui-cell_link">
+          <view class="weui-cell__bd">查看更多</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
       </view>
     </view>
-  </block>
+  </view>
 </view>
