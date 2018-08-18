@@ -54,9 +54,19 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function(res) {
-          wx.switchTab({
-            url: '../shops/shops',
-          })
+          console.log("index:");
+          console.log(res.data)
+          // 如果只有一个店铺直接展示店铺详情
+          if(res.data.result.length == 1){
+            wx.navigateTo({
+              url: '../shopDetail/shopDetail?shopId=' + res.data.result[0].shopId,
+            })
+          }else{
+            wx.switchTab({
+              url: '../shops/shops',
+            })
+          }
+         
         }
       })
     } else if (wx.getStorageSync("isMember")) {

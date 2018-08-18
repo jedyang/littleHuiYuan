@@ -1,0 +1,9 @@
+.item-container {
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  justify-content: space-between;
+  padding-left: 80rpx;
+  padding-right: 80rpx;
+  padding-top: 40rpx;
+}

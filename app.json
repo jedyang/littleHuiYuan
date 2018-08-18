@@ -6,7 +6,9 @@
     "pages/logs/logs",
     "pages/registe/registe",
     "pages/members/members",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/shopDetail/shopDetail",
+    "pages/qrcode/qrcode"
   ],
   "window":{
     "backgroundTextStyle":"light",
