@@ -1,13 +1,9 @@
-.item-container {
-  display: flex;
-  flex-direction: row;
-  height: 100rpx;
-  justify-content: space-between;
-  padding-left: 80rpx;
-  padding-right: 80rpx;
-  padding-top: 40rpx;
+.section__title {
+  margin-top: 30px;
+  text-align: center;
 }
 
-page{
-  background-color: black;
+.section__ctn {
+  margin-top: 10px;
+  text-align: center;
 }
