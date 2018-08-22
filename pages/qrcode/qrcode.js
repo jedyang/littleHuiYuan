@@ -8,32 +8,26 @@ Page({
   
     var that = this
     wx.request({
-      url: 'http://localhost:8080/api/shop/myShops?userId=' + this.data.userId,
+      url: 'http://localhost:8080/api/shop/getAccessToken',
       method: 'GET',
-      header: {
-        'content-type': 'application/json', // 默认值
-        'Cookie': {"sessionId" : this.data.sessionId}
-      },
-      success: function (res) {
-        console.log(res.data)
-        that.setData({ shops: res.data.result })
+      success: function (accessCode) {
+        console.log('go to getQrCode：', accessCode)
+        wx.request({
+          url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=' + accessCode,
+          method: 'POST',
+          data: {
+            'scene': 'shopId'
+          },
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          success: function (res) {
+            console.log(res.data)
+            that.setData({ qrcode: res })
+          }
+        })
       }
     })
   },
-  formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    var words = e.detail.value
-    var that = this
-    wx.request({
-      url: 'http://localhost:8080/api/member/allMember?' + 'shopId=1234' + '&words=' + words,
-      method: 'GET',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        console.log(res.data)
-        that.setData({ members: res.data.data })
-      }
-    })
-  },
+ 
 })
