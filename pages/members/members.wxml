@@ -19,7 +19,7 @@
 
   </view>
 
-  <view class="weui-cells__title">店铺会员</view>
+  <!-- <view class="weui-cells__title">店铺会员</view> -->
   <view class="weui-cells weui-cells_after-title">
     <block wx:for="{{members}}" wx:key="memberId" wx:for-item="member">
       <navigator url="../detail/detail?memberId={{member.memberId}}&shopId={{shopId}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">

@@ -8,24 +8,11 @@ Page({
   
     var that = this
     wx.request({
-      url: 'http://localhost:8080/api/shop/getAccessToken',
+      url: 'http://localhost:8080/api/shop/getQrCode?shopId=15',
       method: 'GET',
-      success: function (accessCode) {
-        console.log('go to getQrCode：', accessCode)
-        wx.request({
-          url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=' + accessCode,
-          method: 'POST',
-          data: {
-            'scene': 'shopId'
-          },
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success: function (res) {
-            console.log(res.data)
-            that.setData({ qrcode: res })
-          }
-        })
+      success: function (picUrl) {
+        console.log('get picUrl', picUrl)
+        that.setData({ qrCodeUrl: picUrl.data })
       }
     })
   },

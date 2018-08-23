@@ -4,7 +4,7 @@
       <view class="section__title">扫码注册会员</view>
       <view class="section__ctn">
         <image style="width: 200px; height: 200px; background-color: #eeeeee;" 
-        mode="scaleToFill" src="{{qrcode}}"></image>
+        mode="scaleToFill" src="{{qrCodeUrl}}"></image>
       </view>
     </view>
   </view>
