@@ -1,10 +1,12 @@
 <!--index.wxml-->
-
-<view class="page">
-   <view class="page__hd">
-        <view class="page__title">首页</view>
-        <view class="page__desc">首页</view>
-    </view>
+<view class="container">
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+    <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
+      <navigator url="{{item.link}}">
+        <image src="{{item.image_url}}" background-size="cover"></image>
+      </navigator>
+    </swiper-item>
+  </swiper>
   <!-- <view>
     <button wx:if="{{!hasShopInfo}}" type="primary" bindtap="doRegiste"> 注册店铺 </button>
     <block wx:else>
@@ -15,7 +17,4 @@
   <view style='display:none'>
     <button type="primary" bindtap="doAddMember"> 注册会员 </button>
   </view> -->
-
-</view>
-<view class="page__bd">
 </view>

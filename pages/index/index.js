@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    banner: [],
+    
     hasShopInfo: false, //标识有无店铺
     userInfo: {},
     hasUserInfo: false,
@@ -57,32 +59,32 @@ Page({
           console.log("index:");
           console.log(res.data)
           // 如果只有一个店铺直接展示店铺详情
-          if(res.data.result.length == 1){
-            wx.navigateTo({
-              url: '../shopDetail/shopDetail?shopId=' + res.data.result[0].shopId,
-            })
-          }else{
-            wx.switchTab({
-              url: '../shops/shops',
-            })
-          }
+          // if(res.data.result.length == 1){
+          //   wx.navigateTo({
+          //     url: '../shopDetail/shopDetail?shopId=' + res.data.result[0].shopId,
+          //   })
+          // }else{
+          //   wx.switchTab({
+          //     url: '../shops/shops',
+          //   })
+          // }
          
         }
       })
     } else if (wx.getStorageSync("isMember")) {
       // 是顾客，渠道会员卡页面
-      wx.request({
-        url: 'http://localhost:8080/api/shop/myShops?userId=' + wx.getStorageSync("ShopUserId"),
-        method: 'GET',
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function(res) {
-            wx.switchTab({
-              url: '../cards/cards',
-            })
-        }
-      })
+      // wx.request({
+      //   url: 'http://localhost:8080/api/shop/myShops?userId=' + wx.getStorageSync("ShopUserId"),
+      //   method: 'GET',
+      //   header: {
+      //     'content-type': 'application/json' // 默认值
+      //   },
+      //   success: function(res) {
+      //       wx.switchTab({
+      //         url: '../cards/cards',
+      //       })
+      //   }
+      // })
     }
 
   },
