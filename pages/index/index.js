@@ -1,4 +1,6 @@
 //index.js
+const util = require('../../utils/util.js');
+const api = require('../../config/api.js');
 //获取应用实例
 const app = getApp()
 
@@ -15,8 +17,19 @@ Page({
   bindViewTap: function() {
 
   },
+  getIndexData: function () {
+    let that = this;
+    util.request(api.IndexUrl).then(function (res) {
+      if (res.status === 0) {
+        that.setData({
+          banner: res.data
+        });
+      }
+    });
+  },
   onLoad: function () {
     console.log("view onLoad");
+    this.getIndexData();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

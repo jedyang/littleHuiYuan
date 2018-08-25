@@ -7,6 +7,21 @@
       </navigator>
     </swiper-item>
   </swiper>
+  <view class="a-section a-brand">
+    <view class="h">
+      <navigator url="../qrcode/qrcode">
+        <text class="txt">发起支付</text>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="a-section a-brand">
+    <view class="h">
+      <switchTab url="../shops/shops">
+        <text class="txt">没想好</text>
+      </switchTab>
+    </view>
+  </view>
   <!-- <view>
     <button wx:if="{{!hasShopInfo}}" type="primary" bindtap="doRegiste"> 注册店铺 </button>
     <block wx:else>

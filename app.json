@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/cards/cards",
     "pages/shops/shops",
@@ -10,11 +10,12 @@
     "pages/shopDetail/shopDetail",
     "pages/qrcode/qrcode"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "navigationBarTitleText": "I会员",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "会员惠",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#ccc",
@@ -23,18 +24,17 @@
     "backgroundColor": "#f9f9f9",
     "list": [
       {
-        "text": "",
         "pagePath": "pages/index/index",
-        "iconPath": "images/pak.png",
-        "selectedIconPath": "images/pak.png"
+        "iconPath": "images/ic_menu_choice_nor.png",
+        "selectedIconPath": "images/ic_menu_choice_pressed.png",
+        "text": "首页"
       },
       {
-        "text": "",
         "pagePath": "pages/shops/shops",
-        "iconPath": "images/my.png",
-        "selectedIconPath": "images/my.png"
+        "iconPath": "images/ic_menu_me_nor.png",
+        "selectedIconPath": "images/ic_menu_me_pressed.png",
+        "text": "我的"
       }
     ]
   }
-
 }

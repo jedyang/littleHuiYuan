@@ -1,10 +1,31 @@
 //app.js
+var util = require('./utils/util.js');
+var api = require('./config/api.js');
+var user = require('./services/user.js');
+
 App({
   onLaunch: function () {
     console.log("APP onLaunch");
+    //获取用户的登录信息
+    user.checkLogin().then(
+      // 已登录，将之保存到本地
+      res => {
+      console.log('已登录')
+      this.globalData.userInfo = wx.getStorageSync('userInfo');
+      this.globalData.token = wx.getStorageSync('token');
+    },
+    // 未登录，提示登录
+    res => {
+      console.log('未登录:' + res)
+    }
+
+    ).catch(() => {
+
+    });
 
     // 登录
     // 先从存储拿
+    /*
     if (wx.getStorageSync('MemberId') || wx.getStorageSync('ShopUserId')) {
       console.log("onLaunch get storeInfo");
       return;
@@ -61,7 +82,9 @@ App({
         }
       }
     })
+    */
   },
+  
   onShow: function () {
     // Do something when show.
     console.log("APP onShow");
@@ -74,6 +97,11 @@ App({
     console.log(msg)
   },
   globalData: {
-    userInfo: null
+    userInfo: {
+      nickname: 'Hi,游客',
+      username: '点击去登录',
+      avatar: 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png'
+    },
+    token: '',
   }
 })
