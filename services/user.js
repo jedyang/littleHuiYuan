@@ -15,14 +15,14 @@ function loginByWeixin() {
   return new Promise(function (resolve, reject) {
     return util.login().then((res) => {
       code = res.code;
-      return util.getUserInfo();
-    }).then((userInfo) => {
+    }).then(() => {
       //登录远程服务器
-      util.request(api.AuthLoginByWeixin, { code: code, userInfo: userInfo }, 'POST').then(res => {
-        if (res.errno === 0) {
+      util.request(api.AuthLoginByWeixin, { code: code }, 'GET').then(res => {
+        if (res.status === 0) {
           //存储用户信息
-          wx.setStorageSync('userInfo', res.data.userInfo);
-          wx.setStorageSync('token', res.data.token);
+          wx.setStorageSync('memberId', res.result.memberId);
+          wx.setStorageSync('shopUserId', res.result.shopUserId);
+          wx.setStorageSync('token', res.result.loginSessionKey);
 
           resolve(res);
         } else {
@@ -43,7 +43,7 @@ function loginByWeixin() {
 function checkLogin() {
   return new Promise(function (resolve, reject) {
     // 先查询是否有值
-    if (wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
+    if (wx.getStorageSync('token')) {
       // 在查询session是否有效
       util.checkSession().then(() => {
         resolve(true);

@@ -17,9 +17,9 @@
 
   <view class="a-section a-brand">
     <view class="h">
-      <switchTab url="../shops/shops">
-        <text class="txt">没想好</text>
-      </switchTab>
+      <navigator url="../registe/registe">
+        <text class="txt">我要开店</text>
+      </navigator>
     </view>
   </view>
   <!-- <view>

@@ -4,20 +4,24 @@ var api = require('./config/api.js');
 var user = require('./services/user.js');
 
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     console.log("APP onLaunch");
     //获取用户的登录信息
     user.checkLogin().then(
       // 已登录，将之保存到本地
       res => {
-      console.log('已登录')
-      this.globalData.userInfo = wx.getStorageSync('userInfo');
-      this.globalData.token = wx.getStorageSync('token');
-    },
-    // 未登录，提示登录
-    res => {
-      console.log('未登录:' + res)
-    }
+        console.log('已登录')
+        this.globalData.shopUserId = wx.getStorageSync('shopUserId');
+        this.globalData.userInfo = wx.getStorageSync('userInfo');
+        this.globalData.token = wx.getStorageSync('token');
+        this.globalData.memberId = wx.getStorageSync('memberId');
+      },
+      // 未登录，提示登录
+      res => {
+        console.log('未登录:' + res)
+        user.loginByWeixin()
+
+      }
 
     ).catch(() => {
 
@@ -84,16 +88,16 @@ App({
     })
     */
   },
-  
-  onShow: function () {
+
+  onShow: function() {
     // Do something when show.
     console.log("APP onShow");
   },
-  onHide: function () {
+  onHide: function() {
     // Do something when hide.
     console.log("APP onHide");
   },
-  onError: function (msg) {
+  onError: function(msg) {
     console.log(msg)
   },
   globalData: {
@@ -103,5 +107,7 @@ App({
       avatar: 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png'
     },
     token: '',
+    shopUserId: '',
+    memberId: '',
   }
 })

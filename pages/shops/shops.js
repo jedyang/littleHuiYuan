@@ -2,7 +2,7 @@
 const app = getApp();
 Page({
   data: {
-    userId: wx.getStorageSync("ShopUserId")
+    userId: wx.getStorageSync('shopUserId')
   },
   onLoad: function (res) {
     var that = this

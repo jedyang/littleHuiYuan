@@ -21,7 +21,7 @@ function formatNumber(n) {
 /**
  * 封封微信的的request
  */
-function request(url, data = {}, method = "GET") {
+function request(url, data, method) {
   return new Promise(function (resolve, reject) {
     wx.request({
       url: url,
@@ -115,21 +115,6 @@ function login() {
   });
 }
 
-function getUserInfo() {
-  return new Promise(function (resolve, reject) {
-    wx.getUserInfo({
-      withCredentials: true,
-      success: function (res) {
-        console.log(res)
-        resolve(res);
-      },
-      fail: function (err) {
-        reject(err);
-      }
-    })
-  });
-}
-
 function redirect(url) {
 
   //判断页面是否需要登录
@@ -159,7 +144,7 @@ module.exports = {
   showErrorToast,
   checkSession,
   login,
-  getUserInfo,
+  // getUserInfo,
 }
 
 
