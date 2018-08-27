@@ -1,9 +1,9 @@
 <!-- 店铺注册 -->
 <view class="add-page">
   <form bindsubmit="submitForm">
-   <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
-   <!-- 隐藏字段，openId -->
-   <input name="openId" class="input" maxlength="100" style='display:none' value="{{openId}}" />
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
+    <!-- 隐藏字段，openId -->
+    <input name="openId" class="input" maxlength="100" style='display:none' value="{{openId}}" />
     <view class="mod-a">
       <view class="mod t-name">
         <text class="key">店铺名称</text>
@@ -24,11 +24,18 @@
         <view class="chnumber">{{noteNowLen}}/{{noteMaxLen}}</view>
       </view>
     </view>
+
+    <view class="img-v">
+      <view class="img" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+        <image src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+        <view class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></view>
+      </view>
+
+    </view>
+
     <view class="add_pic" bindtap="uploadPic">
       <view>添加图片（选）</view>
     </view>
-
-
     <view class="mod-a mt20">
       <view class="submit-btn">
         <button class='button' loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">注册</button>
