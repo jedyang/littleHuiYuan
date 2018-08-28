@@ -137,6 +137,33 @@ function showErrorToast(msg) {
   })
 }
 
+function t(e) {
+  wx.showLoading ? wx.showLoading({
+    title: e,
+    mask: !0
+  }) : wx.showToast({
+    title: e,
+    icon: "loading",
+    mask: !0,
+    duration: 2e4
+  });
+}
+
+function n() {
+  wx.hideLoading ? wx.hideLoading() : wx.hideToast();
+}
+function o(a, t) {
+  n();
+  var o = e(t) ? a : a + t;
+  wx.showModal({
+    title: "提示",
+    content: o,
+    showCancel: !1,
+    confirmText: "我知道了",
+    confirmColor: "#12b7f5"
+  });
+}
+
 module.exports = {
   formatTime,
   request,
@@ -145,6 +172,27 @@ module.exports = {
   checkSession,
   login,
   // getUserInfo,
+  buttonClicked: function (e) {
+    e.setData({
+      buttonClicked: !0
+    }), setTimeout(function () {
+      e.setData({
+        buttonClicked: !1
+      });
+    }, 500);
+  },
+  showLoading: t,
+  hideLoading: n,
+  showModelTips: function (e) {
+    wx.showModal({
+      title: "提示",
+      content: e,
+      showCancel: !1,
+      confirmText: "我知道了",
+      confirmColor: "#12b7f5"
+    });
+  },
+  showFailedToast: o,
 }
 
 

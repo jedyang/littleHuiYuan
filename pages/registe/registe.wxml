@@ -25,21 +25,23 @@
       </view>
     </view>
 
-    <view class="img-v">
-      <view class="img" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
-        <image src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
-        <view class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></view>
+    <view class="enroll-info pic-box">
+      <view class="title">相关图片（最多5张图片）</view>
+      <view class="pics">
+        <view class="pic" wx:for="{{pics}}" wx:key="{{index}}">
+          <image bindtap="chooseImage" data-type="pic" data-url="{{item}}" mode="aspectFill" src="{{item}}"></image>
+          <image bindtap="deleteImg" class="remove" data-index="{{index}}" data-type="pic" src="../../images/delete.png"></image>
+        </view>
+        <view class="pic">
+          <image bindtap="chooseImage" data-type="pic" mode="aspectFill" src="/images/defalut_banner.jpg"></image>
+        </view>
       </view>
-
     </view>
 
-    <view class="add_pic" bindtap="uploadPic">
-      <view>添加图片（选）</view>
-    </view>
     <view class="mod-a mt20">
       <view class="submit-btn">
         <button class='button' loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">注册</button>
-      </view>
+      </view> 
     </view>
   </form>
 </view>

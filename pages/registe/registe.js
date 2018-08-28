@@ -1,4 +1,41 @@
 const qiniuUploader = require("../../utils/qiniuUploader");
+var o = require("../../utils/util.js")
+
+function upload(e, preType, preUrl, i) {
+  var n = preUrl[i];
+  var uploadImgCount = 0;
+  // 先获取七牛云上传的token
+  wx.request({
+    url: 'http://localhost:8080/api/shop/getQiniuToken',
+    success: function(res) {
+      console.log("getQiniuToken:" + res.data)
+      var qiniuToken = res.data
+      for (var i = 0, h = preUrl.length; i < h; i++) {
+        let filePath = preUrl[i]
+        // let postf = filePath.substring(filePath.lastIndexOf("."), filePath.length)
+        // let fileName = 'shopInfoPic5:' + i + postf;
+        // 交给七牛上传
+        qiniuUploader.upload(filePath, (res) => {
+          var u = e.data.pics;
+          u.push("http://" + res.imageURL);
+          e.setData({
+            pics: u
+          })
+        }, (error) => {
+          console.log('error:' + error);
+          o.hideLoading(), o.showFailedToast("上传图片失败，请重试");
+        }, {
+          region: 'SCN',
+          uploadURL: 'https://up-z2.qbox.me',
+          domain: 'pdumzxy0c.bkt.clouddn.com',
+          shouldUseQiniuFileName: true,
+          uptoken: qiniuToken,
+        });
+      }
+      o.hideLoading();
+    }
+  })
+}
 
 Page({
   data: {
@@ -7,7 +44,7 @@ Page({
     noteNowLen: 0,
     showTopTips: false,
     TopTips: '',
-    imgs:[],
+    pics: [],
   },
 
   //字数改变触发事件
@@ -132,27 +169,61 @@ Page({
     });
   },
   // 删除图片
-  deleteImg: function (e) {
-    var imgs = this.data.imgs;
+  deleteImg: function(e) {
+    var pics = this.data.pics;
     var index = e.currentTarget.dataset.index;
-    imgs.splice(index, 1);
+    pics.splice(index, 1);
     this.setData({
-      imgs: imgs
+      pics: pics
     });
   },
 
-    // 预览图片
-    previewImg: function (e) {
-      //获取当前图片的下标
-      var index = e.currentTarget.dataset.index;
-      //所有图片
-      var imgs = this.data.imgs;
+  // 预览图片
+  previewImg: function(e) {
+    //获取当前图片的下标
+    var index = e.currentTarget.dataset.index;
+    //所有图片
+    var imgs = this.data.imgs;
 
+    wx.previewImage({
+      //当前显示图片
+      current: imgs[index],
+      //所有图片
+      urls: imgs
+    })
+  },
+  chooseImage: function(e) {
+    var t = this,
+      prePicUrl = e.currentTarget.dataset.url,
+      prePicType = e.currentTarget.dataset.type,
+      hasPics = this.data.pics;
+    // 预览
+    if (prePicUrl) {
       wx.previewImage({
-        //当前显示图片
-        current: imgs[index],
-        //所有图片
-        urls: imgs
-      })
+        urls: "pic" == prePicType ? hasPics : [prePicUrl],
+        current: prePicUrl
+      });
+    } else {
+      // 上传
+      if ("pic" == prePicType && hasPics.length > 4) {
+        return void o.showModelTips("图片最多只能上传5张");
+      }
+      var l = 5 - hasPics.length; //还可以传的张数
+      wx.chooseImage({
+        count: l,
+        sizeType: ["compressed"],
+        sourceType: ["album", "camera"],
+        success: function(e) {
+          var a = e.tempFilePaths;
+          t.setData({
+            tempPaths: a,
+            tempIndex: 0
+          }), o.showLoading("上传中..."), upload(t, prePicType, a, 0);
+        },
+        fail: function() {
+          o.hideLoading();
+        }
+      });
     }
+  },
 })

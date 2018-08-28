@@ -54,38 +54,54 @@
   text-align: right;
 }
 
-.add_pic {
-  padding: 0 40rpx;
-  background: #fff;
-}
-
-.add_pic view {
-  display: inline-block;
-  margin-top: 20rpx;
-  width: 430rpx;
-  height: 200rpx;
-  line-height: 200rpx;
-  text-align: center;
-  background: url(http://bmob-cdn-14867.b0.upaiyun.com/2017/11/23/e93d28a14095af18801d3c1c68e08fe7.png) no-repeat left center;
-  background-size: 160rpx auto;
-  padding-left: 80rpx;
-  color: #b2b2b2;
-}
-
-.add_pic .code {
-  display: inline-block;
-  margin-top: 20rpx;
-  width: 430rpx;
-  height: 200rpx;
-  line-height: 200rpx;
-  text-align: center;
-  background: url(http://bmob-cdn-14867.b0.upaiyun.com/2017/11/23/e93d28a14095af18801d3c1c68e08fe7.png) no-repeat left center;
-  background-size: 160rpx auto;
-  padding-left: 130rpx;
-  color: #b2b2b2;
-}
 
 .submit-btn {
   background: #fff;
   overflow: hidden;
+}
+
+.enroll-info {
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.enroll-info .remove {
+    position: absolute;
+    right: 0;
+    top: -4rpx;
+    width: 30rpx;
+    height: 30rpx;
+    padding: 20rpx;
+}
+
+.pic-box {
+    padding: 30rpx;
+}
+
+.pic-box .title {
+    font-size: 30rpx;
+    padding-bottom: 30rpx;
+}
+
+.pics {
+    display: flex;
+}
+
+.pic {
+    position: relative;
+    box-sizing: border-box;
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 20rpx;
+    border: 1rpx solid #ddd;
+}
+
+.pic image {
+    width: 100%;
+    height: 100%;
+}
+
+.pic .remove {
+    top: -30rpx!important;
+    right: -30rpx!important;
 }
