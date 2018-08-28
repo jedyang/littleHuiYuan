@@ -22,7 +22,7 @@ function loginByWeixin() {
           //存储用户信息
           wx.setStorageSync('memberId', res.result.memberId);
           wx.setStorageSync('shopUserId', res.result.shopUserId);
-          wx.setStorageSync('token', res.result.loginSessionKey);
+          wx.setStorageSync('openId', res.result.openId);
 
           resolve(res);
         } else {
@@ -43,7 +43,7 @@ function loginByWeixin() {
 function checkLogin() {
   return new Promise(function (resolve, reject) {
     // 先查询是否有值
-    if (wx.getStorageSync('token')) {
+    if (wx.getStorageSync('openId')) {
       // 在查询session是否有效
       util.checkSession().then(() => {
         resolve(true);

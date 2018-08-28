@@ -5,13 +5,17 @@ Page({
     userId: wx.getStorageSync('shopUserId')
   },
   onLoad: function (res) {
+    console.log("shops view onLoad");
+  },
+  onShow: function(res){
+    console.log("shops view onShow");
     var that = this
     wx.request({
       url: 'http://localhost:8080/api/shop/myShops?userId=' + this.data.userId,
       method: 'GET',
       header: {
         'content-type': 'application/json', // 默认值
-        'Cookie': {"sessionId" : this.data.sessionId}
+        'Cookie': { "sessionId": this.data.sessionId }
       },
       success: function (res) {
         console.log(res.data)

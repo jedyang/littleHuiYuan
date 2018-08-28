@@ -7,19 +7,15 @@ const app = getApp()
 Page({
   data: {
     banner: [],
-    
-    hasShopInfo: false, //标识有无店铺
     userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
   bindViewTap: function() {
 
   },
-  getIndexData: function () {
+  getIndexData: function() {
     let that = this;
-    util.request(api.IndexUrl).then(function (res) {
+    util.request(api.IndexUrl).then(function(res) {
       if (res.status === 0) {
         that.setData({
           banner: res.data
@@ -27,39 +23,39 @@ Page({
       }
     });
   },
-  onLoad: function () {
-    console.log("view onLoad");
+  onLoad: function() {
+    console.log("view Index onLoad");
     this.getIndexData();
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    // if (app.globalData.userInfo) {
+    //   this.setData({
+    //     userInfo: app.globalData.userInfo,
+    //     hasUserInfo: true
+    //   })
+    // } else if (this.data.canIUse) {
+    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //   // 所以此处加入 callback 以防止这种情况
+    //   app.userInfoReadyCallback = res => {
+    //     this.setData({
+    //       userInfo: res.userInfo,
+    //       hasUserInfo: true
+    //     })
+    //   }
+    // } else {
+    //   // 在没有 open-type=getUserInfo 版本的兼容处理
+    //   wx.getUserInfo({
+    //     success: res => {
+    //       app.globalData.userInfo = res.userInfo
+    //       this.setData({
+    //         userInfo: res.userInfo,
+    //         hasUserInfo: true
+    //       })
+    //     }
+    //   })
+    // }
     // 查询用户信息
-    console.log(" wx.getStorageSync(ShopUserId):" + wx.getStorageSync("ShopUserId"));
-
-    console.log(" wx.getStorageSync(memberId):" + wx.getStorageSync("MemberId"));
+    console.log(" wx.getStorageSync(shopUserId):" + wx.getStorageSync("shopUserId"));
+    console.log(" wx.getStorageSync(memberId):" + wx.getStorageSync("memberId"));
+    /*
     if (wx.getStorageSync("isShopUser")) {
       // 是老板，去到我的店铺页面
       wx.request({
@@ -99,41 +95,41 @@ Page({
       //   }
       // })
     }
-
+*/
   },
-  onReady: function () {
+  onReady: function() {
     // Do something when page ready.
-    console.log("view onReady");
+    console.log("view Index onReady");
   },
-  onShow: function () {
+  onShow: function() {
     // Do something when page show.
-    console.log("view onShow");
+    console.log("view Index onShow");
   },
-  onHide: function () {
+  onHide: function() {
     // Do something when page hide.
-    console.log("view onHide");
+    console.log("view Index onHide");
   },
-  onUnload: function () {
+  onUnload: function() {
     // Do something when page close.
-    console.log("view onUnload");
+    console.log("view Index onUnload");
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  doRegiste: function() {
-    wx.redirectTo({
-      url: '../registe/registe',
-    })
-  },
+  // getUserInfo: function(e) {
+  //   console.log(e)
+  //   app.globalData.userInfo = e.detail.userInfo
+  //   this.setData({
+  //     userInfo: e.detail.userInfo,
+  //     hasUserInfo: true
+  //   })
+  // },
+  // doRegiste: function() {
+  //   wx.redirectTo({
+  //     url: '../registe/registe',
+  //   })
+  // },
 
-  doAddMember: function() {
-    wx.redirectTo({
-      url: '../registe/registe',
-    })
-  }
+  // doAddMember: function() {
+  //   wx.redirectTo({
+  //     url: '../registe/registe',
+  //   })
+  // }
 })

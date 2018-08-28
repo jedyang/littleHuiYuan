@@ -98,7 +98,8 @@ Page({
         "shopName": shopName,
         "shopAddr": shopAddr,
         "shopDesc": shopDesc,
-        "openId": wx.getStorageSync("LoginSessionKey")
+        "pics": that.data.pics,
+        "openId": wx.getStorageSync("openId")
       },
       header: {
         'content-type': 'application/json' // 默认值
