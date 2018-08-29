@@ -45,8 +45,30 @@ Page({
     showTopTips: false,
     TopTips: '',
     pics: [],
+    shopInfo:{}
   },
-
+  onLoad: function (res) {
+    console.log("registe view onload");
+    console.log(res);
+    var shopId = res.shopId;
+    // 如果shopid有值是修改
+    if(shopId){
+      var that = this
+      wx.request({
+        url: 'http://localhost:8080/api/shop/queryShop?shopId=' + shopId,
+        method: 'GET',
+        header: {
+          'content-type': 'application/json', // 默认值
+        },
+        success: function (res) {
+          console.log(res.data)
+          that.setData({ shopInfo: res.data.result,
+          pics: res.data.result.pics })
+        
+        }
+      })
+    }
+  },
   //字数改变触发事件
   bindTextAreaChange: function(e) {
     var that = this

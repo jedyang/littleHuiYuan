@@ -8,7 +8,8 @@
     "pages/members/members",
     "pages/detail/detail",
     "pages/shopDetail/shopDetail",
-    "pages/qrcode/qrcode"
+    "pages/qrcode/qrcode",
+    "pages/ucenter/index/index"
   ],
   "window": {
     "navigationBarTitleText": "I会员",
@@ -30,7 +31,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/shops/shops",
+        "pagePath": "pages/ucenter/index/index",
         "iconPath": "images/ic_menu_me_nor.png",
         "selectedIconPath": "images/ic_menu_me_pressed.png",
         "text": "我的"

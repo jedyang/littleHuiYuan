@@ -6,12 +6,12 @@ Page({
     showModalStatus: false
   },
   onLoad: function (res) {
-    console.log("==shopDetail onLoad==")
+    console.log("==shopDetail view onLoad==")
     console.log(res)
     this.setData({"shopId" : res.shopId})
     var that = this
     wx.request({
-      url: 'http://localhost:8080/api/shop/myShops?userId=' + this.data.userId,
+      url: 'http://localhost:8080/api/shop/queryShop?shopId=' + that.data.shopId,
       method: 'GET',
       header: {
         'content-type': 'application/json', // 默认值
@@ -23,6 +23,9 @@ Page({
 
       }
     })
+  },
+  modifyShop: function(e){
+
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)

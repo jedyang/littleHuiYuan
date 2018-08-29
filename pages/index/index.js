@@ -7,7 +7,7 @@ const app = getApp()
 Page({
   data: {
     banner: [],
-    userInfo: {},
+    // userInfo: {},
   },
   //事件处理函数
   bindViewTap: function() {
@@ -53,8 +53,14 @@ Page({
     //   })
     // }
     // 查询用户信息
-    console.log(" wx.getStorageSync(shopUserId):" + wx.getStorageSync("shopUserId"));
-    console.log(" wx.getStorageSync(memberId):" + wx.getStorageSync("memberId"));
+    var shopUserId = wx.getStorageSync("shopUserId");
+    var memberId = wx.getStorageSync("memberId");
+    console.log(" wx.getStorageSync(shopUserId):" + shopUserId);
+    console.log(" wx.getStorageSync(memberId):" + memberId);
+    this.setData({
+      shopUserId: shopUserId,
+      memberId: memberId
+    })
     /*
     if (wx.getStorageSync("isShopUser")) {
       // 是老板，去到我的店铺页面

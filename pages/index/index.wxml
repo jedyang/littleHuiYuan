@@ -7,15 +7,26 @@
       </navigator>
     </swiper-item>
   </swiper>
-  <view class="a-section a-brand">
-    <view class="h">
-      <navigator url="../qrcode/qrcode">
-        <text class="txt">发起支付</text>
-      </navigator>
+
+  <view wx:if="{{shopUserId}}">
+    <view class="a-section a-brand">
+      <view class="h">
+        <navigator url="../shops/shops">
+          <text class="txt">我的店铺</text>
+        </navigator>
+      </view>
+    </view>
+    <view class="a-section a-brand">
+      <view class="h">
+        <navigator url="../qrcode/qrcode">
+          <text class="txt">快捷支付</text>
+        </navigator>
+      </view>
+
     </view>
   </view>
 
-  <view class="a-section a-brand">
+  <view class="a-section a-brand" wx:else>
     <view class="h">
       <navigator url="../registe/registe">
         <text class="txt">我要开店</text>

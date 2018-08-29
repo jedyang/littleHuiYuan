@@ -7,20 +7,20 @@
     <view class="mod-a">
       <view class="mod t-name">
         <text class="key">店铺名称</text>
-        <input name="shopName" class="input" maxlength="100" placeholder="请输入店铺名称" value="{{shopName}}" />
+        <input name="shopName" class="input" maxlength="100" placeholder="请输入店铺名称" value="{{shopInfo.shopName}}" />
       </view>
     </view>
 
     <view class="mod-a">
       <view class="mod t-name">
         <text class="key">店铺地址</text>
-        <input name="shopAddr" class="input" maxlength="100" placeholder="请输入店铺地址" value="{{shopAddr}}" />
+        <input name="shopAddr" class="input" maxlength="100" placeholder="请输入店铺地址" value="{{shopInfo.shopAddr}}" />
       </view>
     </view>
 
     <view class="mod-a mt20">
       <view class="mod-big">
-        <textarea name="shopDesc" class="weui-textarea" placeholder="可输入店铺简介或者最新活动" value="{{shopDesc}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />
+        <textarea name="shopDesc" class="weui-textarea" placeholder="可输入店铺简介或者最新活动" value="{{shopInfo.shopDesc}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />
         <view class="chnumber">{{noteNowLen}}/{{noteMaxLen}}</view>
       </view>
     </view>
@@ -28,7 +28,7 @@
     <view class="enroll-info pic-box">
       <view class="title">相关图片（最多5张图片）</view>
       <view class="pics">
-        <view class="pic" wx:for="{{pics}}" wx:key="{{index}}">
+        <view class="pic" wx:for="{{shopInfo.pics}}" wx:key="{{index}}">
           <image bindtap="chooseImage" data-type="pic" data-url="{{item}}" mode="aspectFill" src="{{item}}"></image>
           <image bindtap="deleteImg" class="remove" data-index="{{index}}" data-type="pic" src="../../images/delete.png"></image>
         </view>
