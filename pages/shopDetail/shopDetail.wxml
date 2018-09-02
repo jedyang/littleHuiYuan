@@ -1,7 +1,7 @@
 <view class="page">
-  <view class="page__hd" bindtap='modifyShop'>
-    <view class="page__title">我的店铺</view>
-    <view class="page__desc">说明</view>
+  <view class="page__hd" style="background-image: url({{shop.mainPic}});background-size: cover">
+    <view class="page__title">{{shop.shopName}}</view>
+    <view class="page__desc">{{shop.shopDesc}}</view>
   </view>
   <view class="page__bd">
 

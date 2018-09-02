@@ -19,7 +19,7 @@ Page({
       },
       success: function (res) {
         console.log(res.data)
-        that.setData({ shops: res.data.result })
+        that.setData({ shop: res.data.result })
 
       }
     })

@@ -1,7 +1,7 @@
 <view class="page">
   <view class="page__hd">
     <view class="page__title">我的店铺</view>
-    <view class="page__desc">说明</view>
+    <view class="page__desc">我注册的店铺</view>
   </view>
   <view class="page__bd">
     <view class="weui-panel weui-panel_access">
