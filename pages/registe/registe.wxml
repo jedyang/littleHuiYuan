@@ -28,8 +28,8 @@
     <view class="enroll-info pic-box">
       <view class="title">店铺主图（仅1张图片）</view>
 
-      <view class="pic" wx:if="{{shop.mainPic}}">
-        <image bindtap="chooseMainPic" data-type="pic" data-url="{{shop.mainPic}}" mode="aspectFill" src="{{shop.mainPic}}"></image>
+      <view class="pic" wx:if="{{shopInfo.mainPic}}">
+        <image bindtap="chooseMainPic" data-type="pic" data-url="{{shopInfo.mainPic}}" mode="aspectFill" src="{{shopInfo.mainPic}}"></image>
         <image bindtap="deleteMainPic" class="remove" data-type="pic" src="../../images/delete.png"></image>
       </view>
       <view class="pic" wx:else>
