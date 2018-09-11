@@ -45,7 +45,8 @@ Page({
     showTopTips: false,
     TopTips: '',
     pics: [],
-    shopInfo: {}
+    shopInfo: {},
+    btnText: '注册'
   },
   onLoad: function(res) {
     console.log("registe view onload");
@@ -64,7 +65,8 @@ Page({
           console.log(res.data)
           that.setData({
             shopInfo: res.data.result,
-            pics: res.data.result.pics,
+            pics: res.data.result.pics == null ? [] : res.data.result.pics,
+            btnText: '修改'
           })
 
         }
@@ -97,7 +99,16 @@ Page({
     }, 2000);
   },
   submitForm: function(e) {
-    console.log("注册。。。");
+    var postUrl = 'http://localhost:8080/api/shop/add';
+    var shopId = '';
+    if(this.data.btnText == '修改'){
+      console.log("修改。。。");
+      postUrl = 'http://localhost:8080/api/shop/modify';
+      shopId = this.data.shopInfo.shopId;
+    }else{
+      console.log("注册。。。");
+    }
+    
     var that = this;
     var shopName = e.detail.value.shopName;
     var shopAddr = e.detail.value.shopAddr;
@@ -116,21 +127,23 @@ Page({
     }
 
     wx.request({
-      url: 'http://localhost:8080/api/shop/add',
+      url: postUrl,
       method: 'POST',
       data: {
         "shopName": shopName,
         "shopAddr": shopAddr,
         "shopDesc": shopDesc,
         "pics": that.data.pics,
-        "openId": wx.getStorageSync("openId")
+        "mainPic": that.data.shopInfo.mainPic,
+        "openId": wx.getStorageSync("openId"),
+        "shopId": shopId
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
         console.log(res.data)
-        wx.switchTab({
+        wx.navigateTo({
           url: '../shops/shops',
         })
       }
@@ -146,13 +159,6 @@ Page({
       success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片  
         var tempFilePaths = res.tempFilePaths;
-        //启动上传等待中...  
-        // wx.showToast({
-        //   title: '正在上传...',
-        //   icon: 'loading',
-        //   mask: true,
-        //   duration: 10000
-        // })
         var uploadImgCount = 0;
         // 先获取七牛云上传的token
         wx.request({
@@ -234,10 +240,10 @@ Page({
       });
     } else {
       // 上传
-      if ("pic" == prePicType && hasPics.length > 4) {
+      if ("pic" == prePicType && hasPics != null && hasPics.length > 4) {
         return void o.showModelTips("图片最多只能上传5张");
       }
-      var l = 5 - hasPics.length; //还可以传的张数
+      var l = 5 - (hasPics == null ? 0 : hasPics.length); //还可以传的张数
       wx.chooseImage({
         count: l,
         sizeType: ["compressed"],

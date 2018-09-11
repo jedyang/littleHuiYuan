@@ -52,7 +52,7 @@
 
     <view class="mod-a mt20">
       <view class="submit-btn">
-        <button class='button' loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">注册</button>
+        <button class='button' loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">{{btnText}}</button>
       </view>
     </view>
   </form>

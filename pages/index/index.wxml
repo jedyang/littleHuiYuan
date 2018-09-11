@@ -33,14 +33,13 @@
       </navigator>
     </view>
   </view>
-  <!-- <view>
-    <button wx:if="{{!hasShopInfo}}" type="primary" bindtap="doRegiste"> 注册店铺 </button>
-    <block wx:else>
-      <text>我的店铺</text>
-    </block>
-  </view>
 
-  <view style='display:none'>
-    <button type="primary" bindtap="doAddMember"> 注册会员 </button>
-  </view> -->
+  <view class="a-section a-brand">
+    <view class="h">
+      <navigator url="../cards/cards">
+        <text class="txt">我的卡片</text>
+      </navigator>
+    </view>
+  </view>
+  
 </view>
