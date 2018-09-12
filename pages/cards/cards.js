@@ -5,7 +5,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    sessionId: wx.getStorageSync("LoginSessionKey")
+    memberId: wx.getStorageSync("memberId")
   },
   onLoad: function (res) {
     if (app.globalData.userInfo) {
@@ -37,15 +37,14 @@ Page({
 
     var that = this
     wx.request({
-      url: 'http://localhost:8080/api/member/' + this.data.sessionId + '/allMember',
+      url: 'http://localhost:8080/api/cards/myCards?memberId=' + that.data.memberId,
       method: 'GET',
       header: {
         'content-type': 'application/json', // 默认值
-        'Cookie': {"sessionId" : this.data.sessionId}
       },
       success: function (res) {
         console.log(res.data)
-        that.setData({ members: res.data.data })
+        that.setData({ cards: res.data.result })
       }
     })
   },

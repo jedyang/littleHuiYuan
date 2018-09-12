@@ -40,7 +40,7 @@
     <view class="enroll-info pic-box">
       <view class="title">相关图片（最多5张图片）</view>
       <view class="pics">
-        <view class="pic" wx:for="{{shopInfo.pics}}" wx:key="{{index}}">
+        <view class="pic" wx:for="{{pics}}" wx:key="{{index}}">
           <image bindtap="chooseImage" data-type="pic" data-url="{{item}}" mode="aspectFill" src="{{item}}"></image>
           <image bindtap="deleteImg" class="remove" data-index="{{index}}" data-type="pic" src="../../images/delete.png"></image>
         </view>
