@@ -5,7 +5,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    memberId: wx.getStorageSync("memberId")
+    memberId: wx.getStorageSync("memberId"),
+    cards:[]
   },
   onLoad: function (res) {
     if (app.globalData.userInfo) {

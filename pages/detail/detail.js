@@ -7,11 +7,12 @@ Page({
     this.setData({
       memberId: res.memberId,
       shopId: res.shopId,
+      cardId: res.cardId
     });
-    console.log("detail memberID:" + res.memberId + ",shopId:" + res.shopId);
+    console.log("detail memberID:" + res.memberId + ",shopId:" + res.shopId + ",cardId:" + res.cardId);
     var that = this
     wx.request({
-      url: 'http://localhost:8080/api/member/consumeLogs?memberId=' + that.data.memberId +"&shopId=" + that.data.shopId,
+      url: 'http://localhost:8080/api/member/consumeLogs?cardId=' + that.data.cardId,
       method: 'GET',
       header: {
         'content-type': 'application/json', // 默认值
