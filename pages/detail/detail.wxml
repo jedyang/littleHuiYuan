@@ -1,9 +1,9 @@
 <view class="page">
   <view class="page__hd">
-    <view class="page__title">{{member.name}}</view>
-    <view class="page__desc">{{member.phone}}</view>
-    <view class="page__desc">余额：xxx</view>
-    <view class="page__desc">积分：xxx</view>
+    <view class="page__title">{{baseInfo.shopName}}</view>
+    <view class="page__desc">会员卡号：{{baseInfo.id}}</view>
+    <view class="page__desc">余额：{{baseInfo.money}}</view>
+    <view class="page__desc">积分：{{baseInfo.point}}</view>
   </view>
   <view class="page__bd">
     <view class="weui-panel weui-panel_access">
@@ -11,11 +11,16 @@
       <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{logs}}" wx:key="logId" wx:for-item="log">
           <view class="weui-cell">
+            <view class="weui-cell__bd">消费时间： {{log.logTimeStr}}</view>
             <view class="weui-cell__bd">本次消费： {{log.money}}</view>
             <view class="weui-cell__ft">当前余额： {{log.newMoney}}</view>
           </view>
         </block>
       </view>
     </view>
+  </view>
+  
+  <view>
+  <button>去支付</button>
   </view>
 </view>
