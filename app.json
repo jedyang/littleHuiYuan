@@ -9,6 +9,7 @@
     "pages/detail/detail",
     "pages/shopDetail/shopDetail",
     "pages/qrcode/qrcode",
+    "pages/pay/pay",
     "pages/ucenter/index/index"
   ],
   "window": {

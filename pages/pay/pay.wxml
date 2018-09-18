@@ -1,5 +1,5 @@
 <view class="page">
-    <view class="page__hd">
+  <view class="page__hd">
     <view class="page__title">{{baseInfo.shopName}}</view>
     <view class="page__desc">会员卡号：{{baseInfo.id}}</view>
     <view class="page__desc">余额：{{baseInfo.money}}</view>
@@ -20,11 +20,4 @@
     </view>
   </view>
 
-   <view class="a-section a-brand">
-    <view class="h">
-      <navigator url="../pay/pay">
-        <text class="txt">去支付</text>
-      </navigator>
-    </view>
-  </view>
 </view>
