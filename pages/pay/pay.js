@@ -33,4 +33,20 @@ Page({
       }
     });
   },
+  // 表单提交
+  formSubmit:function(e){
+    console.log("表单提交：" + e.detail.value.useMoney);
+  },
+  //表单验证提示
+  showTopTips: function () {
+    var that = this;
+    this.setData({
+      showTopTips: true
+    });
+    setTimeout(function () {
+      that.setData({
+        showTopTips: false
+      });
+    }, 2000);
+  },
 })

@@ -22,7 +22,7 @@
 
    <view class="a-section a-brand">
     <view class="h">
-      <navigator url="../pay/pay">
+      <navigator url="../pay/pay?cardId={{baseInfo.id}}">
         <text class="txt">去支付</text>
       </navigator>
     </view>

@@ -6,18 +6,33 @@
     <view class="page__desc">积分：{{baseInfo.point}}</view>
   </view>
   <view class="page__bd">
-    <view class="weui-panel weui-panel_access">
-      <view class="weui-panel__hd">消费记录</view>
+    <form bindsubmit="formSubmit">
+      <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
+      <view class="weui-cells__title">本次支付</view>
       <view class="weui-cells weui-cells_after-title">
-        <block wx:for="{{logs}}" wx:key="logId" wx:for-item="log">
-          <view class="weui-cell">
-            <view class="weui-cell__bd">消费时间： {{log.logTimeStr}}</view>
-            <view class="weui-cell__bd">本次消费： {{log.money}}</view>
-            <view class="weui-cell__ft">当前余额： {{log.newMoney}}</view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">使用余额</view>
           </view>
-        </block>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="useMoney" placeholder="可用余额" />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">使用积分</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="可用积分" />
+          </view>
+        </view>
       </view>
-    </view>
+
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" formType="submit" bindtap="showTopTips">确定</button>
+      </view>
+    </form>
   </view>
 
 </view>
