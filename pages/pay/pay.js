@@ -48,7 +48,7 @@ Page({
         data: {
           "usePoint": usePoint,
           "useMoney": useMoney,
-          "cardId": 123
+          "cardId": that.data.cardId
         },
         header: {
           'content-type': 'application/json' // 默认值
