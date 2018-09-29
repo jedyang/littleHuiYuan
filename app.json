@@ -10,6 +10,8 @@
     "pages/shopDetail/shopDetail",
     "pages/qrcode/qrcode",
     "pages/pay/pay",
+    "pages/pay/msg_success",
+    "pages/pay/msg_fail",
     "pages/ucenter/index/index"
   ],
   "window": {

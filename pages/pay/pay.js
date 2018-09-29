@@ -1,7 +1,9 @@
 //cards.js
 const app = getApp();
 Page({
-  data: {},
+  data: {
+    showTopTips: false
+  },
   onLoad: function(res) {
     this.setData({
       cardId: res.cardId
@@ -56,6 +58,15 @@ Page({
         success: function(res) {
           console.log(res.data)
           // 弹出成功
+          if(res.data.success){
+            wx.navigateTo({
+              url: 'msg_success?id=' + res.data.result.logId + '&money=' + res.data.result.money + '&points=' + res.data.result.points + '&cardId=' + res.data.result.memberId
+            })
+          }else{
+            wx.navigateTo({
+              url: 'msg_fail'
+            })
+          }
 
         }
       });
@@ -74,4 +85,5 @@ Page({
       });
     }, 2000);
   },
+ 
 })
