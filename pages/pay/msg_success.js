@@ -12,7 +12,7 @@ Page({
   },
   goTarget: function(){
     wx.navigateTo({
-      url: '/detail/detail?cardId=' + this.data.cardId,
+      url: '../detail/detail?cardId=' + this.data.cardId,
     })
   }
 });

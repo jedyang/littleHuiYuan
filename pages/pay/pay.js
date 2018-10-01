@@ -42,7 +42,13 @@ Page({
         TopTips: '超过可用积分'
       });
       this.showTopTips();
-    } else {
+    } else if (useMoney <0 || usePoint < 0 || (useMoney == 0 && usePoint == 0)){
+      this.setData({
+        TopTips: '支付金额异常'
+      });
+      this.showTopTips();
+    } 
+    else {
 
       wx.request({
         url: "http://localhost:8080/api/cards/pay",
@@ -60,11 +66,11 @@ Page({
           // 弹出成功
           if(res.data.success){
             wx.navigateTo({
-              url: 'msg_success?id=' + res.data.result.logId + '&money=' + res.data.result.money + '&points=' + res.data.result.points + '&cardId=' + res.data.result.memberId
+              url: 'msg_success?id=' + res.data.result.logId + '&money=' + res.data.result.money + '&points=' + res.data.result.points + '&cardId=' + res.data.result.cardId
             })
           }else{
             wx.navigateTo({
-              url: 'msg_fail'
+              url: 'msg_fail?msg=' + res.data.msg
             })
           }
 

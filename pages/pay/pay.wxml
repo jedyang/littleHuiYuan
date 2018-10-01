@@ -15,7 +15,7 @@
             <view class="weui-label">使用余额</view>
           </view>
           <view class="weui-cell__bd">
-            <input class="weui-input" name="useMoney" placeholder="可用余额" value='0'/>
+            <input class="weui-input" type="digit" name="useMoney" placeholder="可用余额" value='0'/>
           </view>
         </view>
 
@@ -24,7 +24,7 @@
             <view class="weui-label">使用积分</view>
           </view>
           <view class="weui-cell__bd">
-            <input class="weui-input" name="usePoint" placeholder="可用积分" value='0'/>
+            <input class="weui-input" type='number' name="usePoint" placeholder="可用积分" value='0'/>
           </view>
         </view>
       </view>
