@@ -18,8 +18,8 @@
     </view>
     <view class="a-section a-brand">
       <view class="h">
-        <navigator url="../qrcode/qrcode">
-          <text class="txt">快捷支付</text>
+        <navigator url="../shoppay/shoppay">
+          <text class="txt">扫码支付</text>
         </navigator>
       </view>
 

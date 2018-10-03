@@ -9,6 +9,7 @@
     "pages/detail/detail",
     "pages/shopDetail/shopDetail",
     "pages/qrcode/qrcode",
+    "pages/shoppay/shoppay",
     "pages/pay/pay",
     "pages/pay/msg_success",
     "pages/pay/msg_fail",
