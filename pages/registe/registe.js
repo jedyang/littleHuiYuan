@@ -45,7 +45,9 @@ Page({
     showTopTips: false,
     TopTips: '',
     pics: [],
-    shopInfo: {},
+    shopInfo: {
+      shopAddr: ''
+    },
     btnText: '注册'
   },
   onLoad: function(res) {
@@ -262,5 +264,33 @@ Page({
     }
   },
 
-
+  chooseLocation:function(){
+    var that = this;
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success: function (res) {
+        wx.openLocation({
+          latitude: res.latitude,
+          longitude: res.longitude,
+          scale: 18,
+          success: function(res){
+            wx.chooseLocation({
+              success: function(res) {
+                console.log(res)
+                var shop_addr = 'shopInfo.shopAddr';
+                that.setData(
+                  {
+                    shopLatitude: res.latitude,
+                    shopLongitude: res.longitude,
+                    [shop_addr]: res.address,
+                  }
+                );
+              },
+            })
+          }
+        })
+       
+      }
+    })
+  }
 })

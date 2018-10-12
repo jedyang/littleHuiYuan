@@ -13,7 +13,7 @@
     "pages/pay/pay",
     "pages/pay/msg_success",
     "pages/pay/msg_fail",
-    "pages/ucenter/index/index"
+    "pages/near/near"
   ],
   "window": {
     "navigationBarTitleText": "I会员",
@@ -35,10 +35,10 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/ucenter/index/index",
-        "iconPath": "images/ic_menu_me_nor.png",
-        "selectedIconPath": "images/ic_menu_me_pressed.png",
-        "text": "我的"
+        "pagePath": "pages/near/near",
+        "iconPath": "images/near_no.png",
+        "selectedIconPath": "images/near_pressed.png",
+        "text": "附近"
       }
     ]
   }

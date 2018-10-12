@@ -18,6 +18,12 @@
       </view>
     </view>
 
+    <view class="mod-a">
+      <view class="mod t-name">
+        <button class="weui-btn mini-btn" type="default" size="mini" bindtap='chooseLocation'>选取地址</button>
+      </view>
+    </view>
+
     <view class="mod-a mt20">
       <view class="mod-big">
         <textarea name="shopDesc" class="weui-textarea" placeholder="可输入店铺简介或者最新活动" value="{{shopInfo.shopDesc}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />
@@ -33,7 +39,7 @@
         <image bindtap="deleteMainPic" class="remove" data-type="pic" src="../../images/delete.png"></image>
       </view>
       <view class="pic" wx:else>
-      <image bindtap="chooseMainPic" data-type="pic" mode="aspectFill" src="/images/defalut_banner.jpg"></image>
+        <image bindtap="chooseMainPic" data-type="pic" mode="aspectFill" src="/images/defalut_banner.jpg"></image>
       </view>
     </view>
 
