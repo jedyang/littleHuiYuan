@@ -137,6 +137,8 @@ Page({
         "shopDesc": shopDesc,
         "pics": that.data.pics,
         "mainPic": that.data.shopInfo.mainPic,
+        "shopLatitude": that.data.shopLatitude,
+        "shopLongitude": that.data.shopLongitude,
         "openId": wx.getStorageSync("openId"),
         "shopId": shopId
       },
